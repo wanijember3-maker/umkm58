@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat AI Aman</title>
+  <script>
+    async function sendPrompt() {
+      const prompt = document.getElementById("prompt").value;
+      const res = await fetch("/.netlify/functions/gemini", {
+        method: "POST",
+        body: JSON.stringify({ prompt }),
+      });
+      const data = await res.json();
+      document.getElementById("output").innerText = JSON.stringify(data, null, 2);
+    }
+  </script>
+</head>
+<body class="p-6 font-sans">
+  <h1 class="text-xl font-bold">Chat dengan AI</h1>
+  <textarea id="prompt" rows="4" cols="40" placeholder="Tulis pertanyaan..."></textarea><br>
+  <button onclick="sendPrompt()">Kirim</button>
+  <pre id="output"></pre>
+</body>
+</html>
