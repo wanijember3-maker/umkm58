@@ -1,0 +1,6 @@
+/my-ai-app
+  /netlify
+    /functions
+      gemini.js
+  index.html
+  netlify.toml
